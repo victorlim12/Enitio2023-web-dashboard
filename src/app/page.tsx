@@ -1,12 +1,18 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import Navbar from './Components/navbar'
+import CoverPage from './Components/coverPage'
+import PastEvents from './Components/pastEvents'
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
+      <Navbar />
+      <CoverPage />
+      <PastEvents />
+      {/* <div className={styles.description}>
         <p>
-          Get started by editing&nbsp;
+          Get started by editing 2&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
         </p>
         <div>
@@ -89,7 +95,7 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
-      </div>
+      </div> */}
     </main>
   )
 }
