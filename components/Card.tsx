@@ -8,20 +8,22 @@ import Image from "next/image";
 import * as constants from "../config/constants";
 
 import { alpha, styled } from "@mui/material/styles";
-import { Card } from "@mui/material";
+import { Grid } from "@mui/material";
 
-const CustomCard = styled(Card)(({ theme }) => ({
+const CustomCard = styled(Box)(({ theme }) => ({
   background: `linear-gradient(to right, rgba(0,0,0,0.3),${alpha(
     theme.palette.primary.main,
     0.5
   )})`,
+  width: "100%",
+  height: "100%",
   backdropFilter: "blur(15px)",
   borderRadius: 15,
   padding: 8,
   boxShadow: `0 3px 5px 2px ${alpha(theme.palette.primary.main, 0.3)}`,
 }));
 
-export function DefaultCard ({children, sx}) {
+export function DefaultCard ({children, sx={}}) {
   return (
     <CustomCard sx={sx}>
       {children}
@@ -29,11 +31,17 @@ export function DefaultCard ({children, sx}) {
   );
 }
 
-export function ClanCard ({children, sx={}}) {
+export function ClanCard ({children, sx={}, color}) {
   return (
-    <CustomCard sx={{...sx,  background: `linear-gradient(to right, rgba(100,0,0,0.3), rgba(200,10,30,0.5)
-    )})`,}}>
+    <Grid item md={6} xs={12}>
+    <CustomCard sx={{...sx,  background: `linear-gradient(to bottom, rgba(0,0,0,0.3),${alpha(
+    color,
+    0.5
+  )})`, padding: 0, paddingBottom: 2, aspectRatio: "1/1.6"}}>
+    <CustomCard sx={{...sx,  background: `rgba(27,27,27,0.8)`,padding: 0}}>
       {children}
     </CustomCard>
+    </CustomCard>
+    </Grid>
   );
 }
