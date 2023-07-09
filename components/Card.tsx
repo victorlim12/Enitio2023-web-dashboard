@@ -1,14 +1,13 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Image from "next/image";
-
-import * as constants from "../config/constants";
-
 import { alpha, styled } from "@mui/material/styles";
 import { Grid } from "@mui/material";
+import type {ComponentProps} from 'react'
+
+interface CardGroupProps extends ComponentProps<'div'> {
+  children: React.ReactNode
+  color:string
+}
 
 const CustomCard = styled(Box)(({ theme }) => ({
   background: `linear-gradient(to right, rgba(0,0,0,0.3),${alpha(
@@ -23,7 +22,7 @@ const CustomCard = styled(Box)(({ theme }) => ({
   boxShadow: `0 3px 5px 2px ${alpha(theme.palette.primary.main, 0.3)}`,
 }));
 
-export function DefaultCard ({children, sx={}}) {
+export function DefaultCard ({children,sx}:{children: React.ReactNode, sx: any}) {
   return (
     <CustomCard sx={sx}>
       {children}
@@ -31,7 +30,7 @@ export function DefaultCard ({children, sx={}}) {
   );
 }
 
-export function ClanCard ({children, sx={}, color}) {
+export function ClanCard ({children, color,...sx}:CardGroupProps) {
   return (
     <Grid item md={6} xs={12}>
     <CustomCard sx={{...sx,  background: `linear-gradient(to bottom, rgba(0,0,0,0.3),${alpha(
