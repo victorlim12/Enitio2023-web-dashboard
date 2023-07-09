@@ -1,0 +1,40 @@
+import type { ComponentPropsWithoutRef } from "react";
+import { alpha, styled } from "@mui/material/styles";
+import { Stack } from "@mui/material";
+
+const CustomCard = styled("div")(({ theme, color }) => ({
+  background: `linear-gradient(to right, rgba(0,0,0,0.3),${
+    color ? alpha(color, 0.5) : alpha(theme.palette.primary.main, 0.5)
+  })`,
+  width: "100%",
+  height: "100%",
+  backdropFilter: "blur(15px)",
+  borderRadius: 15,
+  padding: "2%",
+  boxShadow: `0 3px 5px 2px ${
+    color ? alpha(color, 0.5) : alpha(theme.palette.primary.main, 0.5)
+  })`,
+}));
+
+export function ClanCard({
+  style,
+  color,
+  children,
+}: {
+  style: any;
+  color: string;
+  children: any;
+}) {
+  return (
+    <CustomCard color={color} style={style}>
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        spacing={2}
+      >
+        {children}
+      </Stack>
+    </CustomCard>
+  );
+}

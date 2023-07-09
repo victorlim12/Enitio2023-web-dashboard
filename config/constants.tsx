@@ -1,5 +1,5 @@
 import { Montserrat } from "next/font/google";
-import { createTheme } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
 
 export const menu = ["Overview", "Past Event", "Photos", "Scores", "Sign Up"];
@@ -12,7 +12,7 @@ export const montserrat = Montserrat({
 });
 
 // Create a theme instance.
-export const defaultTheme = createTheme({
+let defaultTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
@@ -29,3 +29,5 @@ export const defaultTheme = createTheme({
     fontFamily: montserrat.style.fontFamily,
   },
 });
+
+export const customTheme = responsiveFontSizes(defaultTheme);
