@@ -9,7 +9,7 @@ const clientSideEmotionCache = createEmotionCache();
 
 export const metadata = {
   title: "ENITIO 2023",
-  description: "Honestly now is Loren Ipsum",
+  description: "Enitio 2023 (NTU EEE Garage)",
 };
 
 export default function RootLayout({
