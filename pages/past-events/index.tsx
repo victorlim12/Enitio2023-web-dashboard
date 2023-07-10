@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styles from '../page.module.css'
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 
 const data = [

@@ -52,9 +52,9 @@ export default function ButtonAppBar() {
             E2639.
           </Typography>
           <Box>
-            {MenuList.map((value, index) => (
-              <Button key={index} color="inherit">
-                {value}
+            {MenuList.map((item, index) => (
+              <Button key={index} color="inherit" href={item.url}>
+                {item.title}
               </Button>
             ))}
           </Box>
