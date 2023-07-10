@@ -33,7 +33,7 @@ export default function ButtonAppBar() {
         right: 0,
       }}
     >
-      <CustomNavBar position="fixed">
+      <CustomNavBar position="static">
         <Toolbar>
           <Button>
             <Image
