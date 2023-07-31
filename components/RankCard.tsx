@@ -29,7 +29,7 @@ export function RankCard({
 }) {
   return (
     <CustomCard  color={color} style={{paddingTop: 0, paddingLeft: 0, paddingRight: 0,paddingBottom: "0.3rem"}}>
-    <CustomCard color={"#1B1B1BBB"} style={style}>
+    <CustomCard color={"#1B1B1BBB"} style={style} onClick={onClick}>
         {children}
     </CustomCard>
     </CustomCard>
