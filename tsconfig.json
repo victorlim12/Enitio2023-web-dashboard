@@ -23,6 +23,6 @@
       "@/*": ["./pages/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/ScoreBoard/SubBlock/Leaderboard.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/ScoreBoard/SubBlock/Leaderboard.jsx", "pages/ScoreBoard/index.jsx"],
   "exclude": ["node_modules"]
 }
