@@ -16,7 +16,7 @@ const CustomCard = styled("div")(({ theme, color }) => ({
   })`,
 }));
 
-export function ClanCard({
+export function RankCard({
   style,
   color,
   children,
@@ -26,8 +26,10 @@ export function ClanCard({
   children: any;
 }) {
   return (
-    <CustomCard color={color} style={style}>
+    <CustomCard  color={color} style={{paddingTop: 0, paddingLeft: 0, paddingRight: 0,paddingBottom: "0.3rem"}}>
+    <CustomCard color={"#1B1B1BBB"} style={style}>
         {children}
+    </CustomCard>
     </CustomCard>
   );
 }

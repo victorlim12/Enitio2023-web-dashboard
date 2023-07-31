@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography, Stack } from "@mui/material";
-import { ClanCard } from "../../../components/RankCard";
+import { RankCard } from "../../../components/RankCard";
 import { AppContext } from "../AppContext";
 
 //for data config related matters:
@@ -20,7 +20,7 @@ export default function LeaderBoard() {
         {result.map((clan, key) => (
           <Reorder.Item key={clan} value={clan} drag={false}>
             <Grid item md={12} xs={12} sx={{ p: "1%" }}>
-              <ClanCard
+              <RankCard
                 color={properties[clan]["color"]}
                 style={{ padding: "2%" }}
               >
@@ -31,14 +31,13 @@ export default function LeaderBoard() {
                   spacing={2}
                 >
                   <Typography
-                    variant="h6"
                     sx={{ textTransform: "uppercase", letterSpacing: 3 }}
                   >
                     {clan}
                   </Typography>
                   <Typography variant="h6">{data[clan]["clan"]}</Typography>
                 </Stack>
-              </ClanCard>
+              </RankCard>
             </Grid>
           </Reorder.Item>
         ))}

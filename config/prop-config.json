@@ -1,7 +1,7 @@
 {
-  "invicta": { "color": "#ffea2b", "img": 0 },
-  "dynari": { "color": "#ff3131", "img": 0 },
-  "ephilia": { "color": "#04ad01", "img": 0 },
-  "akrona": { "color": "#2677ff", "img": 0 },
-  "solaris": { "color": "#f81ddb", "img": 0 }
+  "invicta": { "color": "#ffea2b", "img": "/Akrona.png", "desc": "lorem ipsum"},
+  "dynari": { "color": "#ff3131", "img": "/Akrona.png", "desc": "lorem ipsum"},
+  "ephilia": { "color": "#04ad01", "img": "/Akrona.png", "desc": "lorem ipsum"},
+  "akrona": { "color": "#2677ff", "img": "/Akrona.png", "desc": "lorem ipsum"},
+  "solaris": { "color": "#f81ddb", "img": "/Akrona.png", "desc": "I LOVE BEING LAZY"}
 }
