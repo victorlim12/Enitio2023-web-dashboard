@@ -19,9 +19,11 @@ const CustomCard = styled("div")(({ theme, color }) => ({
 export function RankCard({
   style,
   color,
+  onClick,
   children,
 }: {
   style: any;
+  onClick: any;
   color: string;
   children: any;
 }) {

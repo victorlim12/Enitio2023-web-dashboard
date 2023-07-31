@@ -23,6 +23,6 @@
       "@/*": ["./pages/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/ScoreBoard/SubBlock/Leaderboard.jsx", "pages/ScoreBoard/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/ScoreBoard/SubBlock/Leaderboard.jsx", "pages/ScoreBoard/index.jsx", "components/RankCard.tsx"],
   "exclude": ["node_modules"]
 }
