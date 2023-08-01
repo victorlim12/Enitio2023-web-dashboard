@@ -10,11 +10,10 @@ export default function CardSlider() {
   const [open, setOpen] = React.useState(false);
   const [clanName, setClan] = React.useState("");
   const handleOpen = (clan) => {
-    console.log(clan);
     setClan(clan);
     setOpen(true);
   };
-  console.log(clanName);
+
   const { data, loading, result, setResult, theme, setTheme } =
     React.useContext(AppContext);
 
@@ -24,7 +23,7 @@ export default function CardSlider() {
     centerPadding: "50px",
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
     adaptiveHeight: true,

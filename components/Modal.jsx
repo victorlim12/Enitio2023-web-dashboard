@@ -31,7 +31,6 @@ const CustomModal = styled(Box)(({ theme, bg, clan }) => ({
 
 export default function ClanModalPopup({ open, setOpen, children, clan }) {
   const handleClose = () => setOpen(false);
-  console.log(clan);
 
   return (
     <>

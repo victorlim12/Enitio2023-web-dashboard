@@ -2,12 +2,42 @@
 import React, { createContext, useState } from "react";
 import properties from "../../config/prop-config.json";
 
+//to extract out numbers from "og1" etc
+function extractNumberFromString(str) {
+  const regexPattern = /\d+/; // The regex pattern to match one or more digits (\d+)
+
+  const match = str.match(regexPattern);
+
+  if (match) {
+    return Number(match[0]); // Convert the matched string to a number
+  } else {
+    return NaN; // Return NaN if no number is found
+  }
+}
+
+function extractOG(arr) {
+  const temp = [];
+  for (const obj of arr) {
+    temp.push({ name: `${obj.name}_og1`, clan: obj.og1 });
+    temp.push({ name: `${obj.name}_og2`, clan: obj.og2 });
+    temp.push({ name: `${obj.name}_og3`, clan: obj.og3 });
+  }
+  return temp;
+}
+
+function sortRank(arr) {
+  arr = arr.sort((a, b) => b.clan - a.clan);
+  arr = arr.map((sortedData) => sortedData.name);
+  return arr;
+}
+
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = React.useState(true);
   const [data, setData] = React.useState([]);
   const [result, setResult] = React.useState([]);
+  const [og, setOg] = React.useState([]);
   const [theme, setTheme] = React.useState("");
 
   const fetchData = async () => {
@@ -16,11 +46,17 @@ const AppProvider = ({ children }) => {
       const data = await response.json();
       const res = Object.entries(data).map(([name, obj]) => ({ name, ...obj }));
       setData(data); // Set the fetched data into the state
-      const sortedData = [...res];
-      sortedData.sort((a, b) => b.clan - a.clan);
-      let res_array = sortedData.map((sortedData) => sortedData.name);
-      setResult(res_array);
-      setTheme(properties[res_array[0]]["color"]);
+      let sortedData = [...res];
+      let ogData = extractOG(sortedData);
+      let res_array_clan = sortRank(sortedData);
+      let res_array_og = sortRank(ogData);
+      console.log(res_array_og);
+      setResult(res_array_clan);
+      setOg(res_array_og);
+      setTheme(properties[res_array_clan[0]]["color"]);
+
+      //add in new segment to extract out
+
       setLoading(false); // Set loading to false once data is fetched
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -50,6 +86,8 @@ const AppProvider = ({ children }) => {
         setResult,
         theme,
         setTheme,
+        og,
+        setOg,
         // Add more state variables and their respective setters
       }}
     >
