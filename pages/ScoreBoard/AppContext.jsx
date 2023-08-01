@@ -12,7 +12,7 @@ const AppProvider = ({ children }) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/data");
+      const response = await fetch("http://159.223.38.56:8000/api/data");
       const data = await response.json();
       const res = Object.entries(data).map(([name, obj]) => ({ name, ...obj }));
       setData(data); // Set the fetched data into the state
