@@ -11,14 +11,14 @@ import * as constants from "../config/constants";
 import { alpha, styled } from "@mui/material/styles";
 
 const CustomNavBar = styled(AppBar)(({ theme }) => ({
-  background: `linear-gradient(to right, rgba(0,0,0,0.3),${alpha(
+  background: `linear-gradient(to right, rgba(0,0,0,0.2),${alpha(
     theme.palette.primary.main,
-    0.5
+    0.1
   )})`,
   backdropFilter: "blur(15px)",
   marginTop: "0.5%",
   borderRadius: 15,
-  boxShadow: `0 3px 5px 2px ${alpha(theme.palette.primary.main, 0.3)}`,
+  boxShadow: `0 3px 5px 2px ${alpha(theme.palette.primary.main, 0.2)}`,
 }));
 
 export default function ButtonAppBar() {

@@ -3,8 +3,8 @@ import { alpha, styled } from "@mui/material/styles";
 import { Stack } from "@mui/material";
 
 const CustomCard = styled("div")(({ theme, color }) => ({
-  background: `linear-gradient(to right, rgba(0,0,0,0.3),${
-    color ? alpha(color, 0.5) : alpha(theme.palette.primary.main, 0.5)
+  background: `linear-gradient(to right, rgba(27, 1, 27, 0.5),${
+    color ? alpha(color, 0.8) : alpha(theme.palette.primary.main, 0.5)
   })`,
   width: "100%",
   height: "100%",
@@ -16,25 +16,22 @@ const CustomCard = styled("div")(({ theme, color }) => ({
   })`,
 }));
 
-export function ClanCard({
+export function RankCard({
   style,
   color,
+  onClick,
   children,
 }: {
   style: any;
+  onClick: any;
   color: string;
   children: any;
 }) {
   return (
-    <CustomCard color={color} style={style}>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        spacing={2}
-      >
+    <CustomCard  color={color} style={{paddingTop: 0, paddingLeft: 0, paddingRight: 0,paddingBottom: "0.3rem"}}>
+    <CustomCard color={"#1B1B1BBB"} style={style} onClick={onClick}>
         {children}
-      </Stack>
+    </CustomCard>
     </CustomCard>
   );
 }
