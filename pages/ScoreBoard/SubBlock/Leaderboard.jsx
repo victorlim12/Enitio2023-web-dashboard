@@ -15,11 +15,9 @@ export default function LeaderBoard() {
   const [open, setOpen] = React.useState(false);
   const [clanName, setClan] = React.useState("");
   const handleOpen = (clan) => {
-    console.log(clan);
     setClan(clan);
     setOpen(true);
   };
-  console.log(clanName);
 
   return (
     <>

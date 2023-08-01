@@ -1,5 +1,6 @@
 // AppContext.js
 import React, { createContext, useState } from "react";
+import properties from "../../config/prop-config.json";
 
 const AppContext = createContext();
 
@@ -7,6 +8,7 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = React.useState(true);
   const [data, setData] = React.useState([]);
   const [result, setResult] = React.useState([]);
+  const [theme, setTheme] = React.useState("");
 
   const fetchData = async () => {
     try {
@@ -16,7 +18,9 @@ const AppProvider = ({ children }) => {
       setData(data); // Set the fetched data into the state
       const sortedData = [...res];
       sortedData.sort((a, b) => b.clan - a.clan);
-      setResult(sortedData.map((sortedData) => sortedData.name));
+      let res_array = sortedData.map((sortedData) => sortedData.name);
+      setResult(res_array);
+      setTheme(properties[res_array[0]]["color"]);
       setLoading(false); // Set loading to false once data is fetched
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -26,7 +30,6 @@ const AppProvider = ({ children }) => {
 
   React.useEffect(() => {
     fetchData();
-
     // Fetch data at regular intervals using setInterval
     const intervalId = setInterval(fetchData, 2000);
 
@@ -45,6 +48,8 @@ const AppProvider = ({ children }) => {
         setLoading,
         result,
         setResult,
+        theme,
+        setTheme,
         // Add more state variables and their respective setters
       }}
     >
