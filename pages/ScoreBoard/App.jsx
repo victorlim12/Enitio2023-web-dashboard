@@ -1,7 +1,7 @@
 import React from "react";
 import LeaderBoard from "./SubBlock/Leaderboard";
 import CardSlider from "./SubBlock/CardSlider";
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { AppContext, AppProvider } from "./AppContext";
 import { motion } from "framer-motion";
 import { alpha, styled } from "@mui/material/styles";

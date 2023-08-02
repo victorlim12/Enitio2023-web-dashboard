@@ -112,20 +112,12 @@ li {
 }
 
 .slider-container {
-  width: 80%; /* Set the width of the slider container as per your requirement */
+  width: 90%; /* Set the width of the slider container as per your requirement */
   margin: 0 auto; /* Center the slider container horizontally on the page */
 }
 
 .slider-container .slick-slide {
-  margin: 0 20px;
-}
-
-.slider-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px; /* Optional border-radius to round the corners of the slides */
-  /* Add more styles as needed for your slide content */
+  margin: 0 15px;
 }
 
 .dot {

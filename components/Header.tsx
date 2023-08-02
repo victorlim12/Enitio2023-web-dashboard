@@ -35,7 +35,7 @@ export default function ButtonAppBar() {
     >
       <CustomNavBar position="static">
         <Toolbar>
-          <Button>
+          <Button href="/">
             <Image
               src="/enitio_logo.png"
               alt="Enitio Logo"

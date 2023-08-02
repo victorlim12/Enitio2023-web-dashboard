@@ -29,7 +29,6 @@ export default function CardSlider() {
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
-    adaptiveHeight: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -65,13 +64,12 @@ export default function CardSlider() {
       </ClanModalPopup>
       <Slider {...settings}>
         {result.map((clan, idx) => (
-          <div key={idx}>
-            <ClanCard
-              rank={idx + 1}
-              clan={clan}
-              onClick={() => handleOpen(clan)}
-            ></ClanCard>
-          </div>
+          <ClanCard
+            key={idx}
+            rank={idx + 1}
+            clan={clan}
+            onClick={() => handleOpen(clan)}
+          ></ClanCard>
         ))}
       </Slider>
     </div>

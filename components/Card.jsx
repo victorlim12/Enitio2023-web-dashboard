@@ -1,11 +1,11 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
+import { motion } from "framer-motion";
 import { alpha, styled } from "@mui/material/styles";
 import { Grid, Typography, Stack, Card } from "@mui/material";
 import ClanMetadata from "../config/prop-config.json";
 import Image from "next/image";
 
-const CustomCard = styled(Card)(({ theme, clan }) => ({
+const CustomCard = styled(motion("div"))(({ theme, clan }) => ({
   background: `linear-gradient(to right, rgba(0,0,0,0.3),${alpha(
     theme.palette.primary.main,
     0.5
@@ -24,8 +24,17 @@ export function DefaultCard({ children, sx }) {
 }
 
 export function ClanCard({ children, clan, rank, onClick, ...sx }) {
+  const variants = {
+    initial: { opacity: 0, scale: 0 },
+    animate: { opacity: 1, scale: 1 },
+  };
+
   return (
     <CustomCard
+      initial="initial"
+      animate="animate"
+      variants={variants}
+      whileHover={{ scale: 0.95 }}
       onClick={onClick}
       clan={clan}
       sx={{

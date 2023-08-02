@@ -52,11 +52,19 @@ export default function LeaderBoard() {
                       alignItems="center"
                       spacing={2}
                     >
-                      <Typography
-                        sx={{ textTransform: "uppercase", letterSpacing: 3 }}
-                      >
-                        {clan}
-                      </Typography>
+                      <Stack direction={"row"} alignItems={"center"}>
+                        <Typography
+                          sx={{ textTransform: "uppercase", letterSpacing: 4 }}
+                        >
+                          {key + 1}.
+                        </Typography>
+                        <Typography
+                          fontWeight={600}
+                          sx={{ textTransform: "uppercase", letterSpacing: 3 }}
+                        >
+                          {clan}
+                        </Typography>
+                      </Stack>
                       <Typography variant="h6">{data[clan]["clan"]}</Typography>
                     </Stack>
                   </RankCard>
@@ -80,11 +88,19 @@ export default function LeaderBoard() {
                       alignItems="center"
                       spacing={2}
                     >
-                      <Typography
-                        sx={{ textTransform: "uppercase", letterSpacing: 3 }}
-                      >
-                        {og}
-                      </Typography>
+                      <Stack direction={"row"} alignItems={"center"}>
+                        <Typography
+                          sx={{ textTransform: "uppercase", letterSpacing: 4 }}
+                        >
+                          {idx + 1}.
+                        </Typography>
+                        <Typography
+                          fontWeight={600}
+                          sx={{ textTransform: "uppercase", letterSpacing: 3 }}
+                        >
+                          {og}
+                        </Typography>
+                      </Stack>
                       <Typography variant="h6">
                         {ogInfo[idx]["clan"]}
                       </Typography>

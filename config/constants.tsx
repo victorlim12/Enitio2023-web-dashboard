@@ -25,6 +25,41 @@ export const menu = [
   // }
 ];
 
+//for card button navigation
+export const CardNav = [
+  {
+    title: "Score",
+    content: "Take a look at how you perform",
+    link: "/ScoreBoard",
+    color: "#16abff",
+  },
+  {
+    title: "Participant Handbook",
+    content: "This, honestly, might be all you need :)",
+    link: "/ScoreBoard",
+    color: "#00002f",
+  },
+  {
+    title: "Photo DUMP",
+    content:
+      "You might be able to view your photos here, smile to the photographers.",
+    link: "/ScoreBoard",
+    color: "#00002f",
+  },
+  {
+    title: "Garage at EEE",
+    content: "Guess who initiated ENITIO? Join us as an ambassador.",
+    link: "/ScoreBoard",
+    color: "#00002f",
+  },
+  {
+    title: "Instagram",
+    content: "Stay Connected? See you in ENITIO 2024",
+    link: "/ScoreBoard",
+    color: "#00002f",
+  },
+];
+
 export const montserrat = Montserrat({
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
