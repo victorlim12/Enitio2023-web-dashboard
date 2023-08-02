@@ -5,6 +5,7 @@ import { ClanCard } from "../../../components/Card";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ClanModalPopup from "../../../components/Modal";
+import CardHighlight from "./CardHighlight";
 
 export default function CardSlider() {
   const [open, setOpen] = React.useState(false);
@@ -22,7 +23,9 @@ export default function CardSlider() {
     className: "center",
     centerPadding: "50px",
     infinite: true,
-    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    speed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
@@ -57,7 +60,9 @@ export default function CardSlider() {
 
   return (
     <div className="slider-container">
-      <ClanModalPopup open={open} setOpen={setOpen} clan={clanName} />
+      <ClanModalPopup open={open} setOpen={setOpen} clan={clanName}>
+        <CardHighlight clan={clanName} />
+      </ClanModalPopup>
       <Slider {...settings}>
         {result.map((clan, idx) => (
           <div key={idx}>

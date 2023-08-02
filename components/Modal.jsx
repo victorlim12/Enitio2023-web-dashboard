@@ -8,25 +8,26 @@ const CustomModal = styled(Box)(({ theme, bg, clan }) => ({
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  height: "85vh",
+  height: "fit-content",
   maxWidth: "100vw",
-  minWidth: "60vw",
-  maxHeight: "85vh",
+  minWidth: "70vw",
+  maxHeight: "90vh",
+  padding: "3%",
   background: bg
     ? `${bg}`
-    : "linear-gradient(248deg, rgba(58,32,83,0) 32%, rgba(39,1,75,0.3) 100%);",
+    : `linear-gradient(248deg, #0a0014c6 32%, ${alpha(
+        properties[clan]["color"],
+        0.3
+      )})`,
   backdropFilter: "blur(50px)",
   outline: "0.1em solid",
   outlineColor: `${properties[clan]["color"]}`,
   boxShadow: 24,
+  backgroundColor: "rgba(0,0,0,0.9)",
   borderRadius: 12,
   display: "flex",
   alignItems: "center",
   p: 4,
-  "&:hover": {
-    transition: "background 0.5s ease",
-    background: `${alpha(theme.palette.primary.main, 0.05)}`,
-  },
 }));
 
 export default function ClanModalPopup({ open, setOpen, children, clan }) {
