@@ -5,6 +5,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { AppContext, AppProvider } from "./AppContext";
 import { motion } from "framer-motion";
 import { alpha, styled } from "@mui/material/styles";
+import ThreeDotsWave from "../../components/LoadingAnimation";
 
 export default function App() {
   const { theme, setTheme, loading } = React.useContext(AppContext);
@@ -24,7 +25,7 @@ export default function App() {
         >
           <Grid item xs={12}>
             <Typography
-              variant="h2"
+              variant="h3"
               fontWeight={700}
               sx={{
                 textAlign: "center",
@@ -32,19 +33,22 @@ export default function App() {
                 letterSpacing: 3,
               }}
             >
-              It is trying it best, plese wait.
+              Give us a second.
             </Typography>
+            <ThreeDotsWave />
           </Grid>
         </Grid>
       ) : (
         <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           style={{
             background: `radial-gradient(circle, rgba(0,0,0,1) 0%, ${alpha(
               theme,
               0.3
             )}, rgba(0,0,0,1) 100%)`,
           }}
-          transition={{ delay: 1 }}
+          transition={{ delay: 0.5 }}
           animate={{
             opacity: theme ? 1 : 0.1, // Adjust the opacity values for the fade effect
           }}

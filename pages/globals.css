@@ -127,3 +127,11 @@ li {
   border-radius: 8px; /* Optional border-radius to round the corners of the slides */
   /* Add more styles as needed for your slide content */
 }
+
+.dot {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  background-color: #007bff; /* You can change the color of the dots here */
+  border-radius: 50%;
+}

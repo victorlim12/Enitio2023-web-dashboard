@@ -32,6 +32,8 @@ const AppProvider = ({ children }) => {
   const [og, setOg] = React.useState([]);
   const [theme, setTheme] = React.useState("");
 
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
   function fetchData() {
     fetch("http://159.223.38.56:8000/api/data")
       .then((response) => response.json())
@@ -52,12 +54,12 @@ const AppProvider = ({ children }) => {
         setResult(res_array_clan);
         setOg(res_array_og);
         setTheme(properties[res_array_clan[0]]["color"]);
-
-        setLoading(false); // Set loading to false after all operations are done
+        sleep(1000).then(() => {
+          setLoading(false);
+        });
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        setLoading(true); // Set loading to false even if there's an error
       });
   }
 
