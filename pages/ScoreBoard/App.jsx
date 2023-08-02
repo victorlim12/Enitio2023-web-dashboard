@@ -12,7 +12,30 @@ export default function App() {
   return (
     <>
       {loading ? (
-        <h1>Loading in progress. Please wait</h1>
+        <Grid
+          container
+          spacing={2}
+          sx={{
+            mt: "2%",
+            padding: 2,
+            height: "80vh",
+            alignItems: "center",
+          }}
+        >
+          <Grid item xs={12}>
+            <Typography
+              variant="h2"
+              fontWeight={700}
+              sx={{
+                textAlign: "center",
+                textTransform: "uppercase",
+                letterSpacing: 3,
+              }}
+            >
+              It is trying it best, plese wait.
+            </Typography>
+          </Grid>
+        </Grid>
       ) : (
         <motion.div
           style={{

@@ -10,7 +10,6 @@ function extractOG(arr) {
     temp.push({ name: `${obj.name}_og2`, clan: obj.og2, clan_name: obj.name });
     temp.push({ name: `${obj.name}_og3`, clan: obj.og3, clan_name: obj.name });
   }
-  console.log(temp);
   return temp;
 }
 
@@ -33,29 +32,34 @@ const AppProvider = ({ children }) => {
   const [og, setOg] = React.useState([]);
   const [theme, setTheme] = React.useState("");
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("http://159.223.38.56:8000/api/data");
-      const data = await response.json();
-      const res = Object.entries(data).map(([name, obj]) => ({ name, ...obj }));
-      setData(data); // Set the fetched data into the state
-      let sortedData = [...res];
-      let ogData = extractOG(sortedData);
-      setOgInfo(ogData);
-      //Rank data for both og and clan
-      let res_array_clan = sortRank(sortedData);
-      let res_array_og = sortRank(ogData);
-      setResult(res_array_clan);
-      setOg(res_array_og);
-      setTheme(properties[res_array_clan[0]]["color"]);
+  function fetchData() {
+    fetch("http://159.223.38.56:8000/api/data")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data); // Set the fetched data into the state
 
-      //add in new segment to extract out
-      setLoading(false); // Set loading to false once data is fetched
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setLoading(false); // Set loading to false even if there's an error
-    }
-  };
+        const res = Object.entries(data).map(([name, obj]) => ({
+          name,
+          ...obj,
+        }));
+        let sortedData = [...res];
+        let ogData = extractOG(sortedData);
+        setOgInfo(ogData);
+
+        // Rank data for both og and clan
+        let res_array_clan = sortRank(sortedData);
+        let res_array_og = sortRank(ogData);
+        setResult(res_array_clan);
+        setOg(res_array_og);
+        setTheme(properties[res_array_clan[0]]["color"]);
+
+        setLoading(false); // Set loading to false after all operations are done
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(true); // Set loading to false even if there's an error
+      });
+  }
 
   React.useEffect(() => {
     fetchData();
