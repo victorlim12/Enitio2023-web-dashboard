@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography, Stack } from "@mui/material";
 import { ClanCard } from "../../../components/Card";
-import { AppContext } from "../AppContext";
+import { AppContext } from "../../../components/AppContext";
 import properties from "../../../config/prop-config.json";
 
 export default function CardHighlight({ clan }) {
