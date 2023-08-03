@@ -63,7 +63,7 @@ export default function CardSlider() {
         <CardHighlight clan={clanName} />
       </ClanModalPopup>
       <Slider {...settings}>
-        {result.map((clan, idx) => (
+        {result?.map((clan, idx) => (
           <ClanCard
             key={idx}
             rank={idx + 1}

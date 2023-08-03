@@ -36,7 +36,7 @@ export default function LeaderBoard() {
       >
         {option === "Clan" ? (
           <Reorder.Group axis="y" values={result} onReorder={setResult}>
-            {result.map((clan, key) => (
+            {result?.map((clan, key) => (
               <Reorder.Item key={clan} value={clan} drag={false}>
                 <ClanModalPopup open={open} setOpen={setOpen} clan={clanName} />
                 <Grid item md={12} xs={12} sx={{ p: "1%" }}>

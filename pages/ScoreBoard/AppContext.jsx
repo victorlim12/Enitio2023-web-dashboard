@@ -21,10 +21,10 @@ function sortRank(arr) {
 }
 
 //initialize context
-const AppContext = createContext();
+export const AppContext = createContext({});
 
 //Provider wrapper for Leaderboard page
-const AppProvider = ({ children }) => {
+export default function AppProvider({ children }) {
   const [loading, setLoading] = React.useState(true);
   const [data, setData] = React.useState([]);
   const [result, setResult] = React.useState([]);
@@ -95,6 +95,4 @@ const AppProvider = ({ children }) => {
       {children}
     </AppContext.Provider>
   );
-};
-
-export { AppContext, AppProvider };
+}

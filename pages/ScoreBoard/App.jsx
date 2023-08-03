@@ -2,13 +2,13 @@ import React from "react";
 import LeaderBoard from "./SubBlock/Leaderboard";
 import CardSlider from "./SubBlock/CardSlider";
 import { Grid, Typography } from "@mui/material";
-import { AppContext, AppProvider } from "./AppContext";
+import { AppContext } from "./AppContext";
 import { motion } from "framer-motion";
 import { alpha, styled } from "@mui/material/styles";
 import ThreeDotsWave from "../../components/LoadingAnimation";
 
 export default function App() {
-  const { theme, setTheme, loading } = React.useContext(AppContext);
+  const { theme, loading } = React.useContext(AppContext);
 
   return (
     <>
@@ -43,10 +43,14 @@ export default function App() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           style={{
-            background: `radial-gradient(circle, rgba(0,0,0,1) 0%, ${alpha(
-              theme,
-              0.3
-            )}, rgba(0,0,0,1) 100%)`,
+            background: theme
+              ? `radial-gradient(circle, rgba(0,0,0,1) 0%, ${alpha(
+                  theme,
+                  0.3
+                )}, rgba(0,0,0,1) 100%)`
+              : `radial-gradient(circle, rgba(0,0,0,1) 0%,  rgba(0,0,0,1) 0%,
+                  0.3
+                )}, rgba(0,0,0,1) 100%)`,
           }}
           transition={{ delay: 0.5 }}
           animate={{

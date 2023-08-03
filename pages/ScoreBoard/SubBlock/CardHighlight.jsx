@@ -9,28 +9,32 @@ export default function CardHighlight({ clan }) {
 
   return (
     <>
-      <Grid container spacing={5} direction={"row"} sx={{ p: "4%" }}>
-        <Grid item xs={12} md={6}>
-          <ClanCard rank={"1st"} clan={clan}></ClanCard>
+      {clan ? (
+        <Grid container spacing={5} direction={"row"} sx={{ p: "4%" }}>
+          <Grid item xs={12} md={6}>
+            <ClanCard rank={"1st"} clan={clan}></ClanCard>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Typography
+              variant="h4"
+              fontWeight={600}
+              sx={{ textTransform: "uppercase", letterSpacing: 3 }}
+            >
+              {clan}
+            </Typography>
+            <br />
+            <Typography
+              variant="body1"
+              fontWeight={400}
+              sx={{ letterSpacing: 3 }}
+            >
+              {properties[clan]["block"]}
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Typography
-            variant="h4"
-            fontWeight={600}
-            sx={{ textTransform: "uppercase", letterSpacing: 3 }}
-          >
-            {clan}
-          </Typography>
-          <br />
-          <Typography
-            variant="body1"
-            fontWeight={400}
-            sx={{ letterSpacing: 3 }}
-          >
-            {properties[clan]["block"]}
-          </Typography>
-        </Grid>
-      </Grid>
+      ) : (
+        <></>
+      )}
     </>
   );
 }
