@@ -22,6 +22,7 @@ export default function RootLayout({
   return (
     <CacheProvider value={clientSideEmotionCache}>
       <Head>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Layout>

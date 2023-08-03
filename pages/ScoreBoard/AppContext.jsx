@@ -35,7 +35,7 @@ export default function AppProvider({ children }) {
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   function fetchData() {
-    fetch("http://159.223.38.56:8000/api/data")
+    fetch(`${process.env.NEXT_PUBLIC_MIDDLEWARE}/api/data`)
       .then((response) => response.json())
       .then((data) => {
         setData(data); // Set the fetched data into the state
@@ -54,7 +54,7 @@ export default function AppProvider({ children }) {
         setResult(res_array_clan);
         setOg(res_array_og);
         setTheme(properties[res_array_clan[0]]["color"]);
-        sleep(1000).then(() => {
+        sleep(500).then(() => {
           setLoading(false);
         });
       })
