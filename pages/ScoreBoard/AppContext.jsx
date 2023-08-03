@@ -35,7 +35,7 @@ export default function AppProvider({ children }) {
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   function fetchData() {
-    fetch("/api/data")
+    fetch(`${process.env.NEXT_PUBLIC_SCORESHEET}/api/data`)
       .then((response) => response.json())
       .then((data) => {
         setData(data); // Set the fetched data into the state

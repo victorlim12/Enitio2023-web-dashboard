@@ -19,7 +19,7 @@ export default function App() {
           sx={{
             mt: "2%",
             padding: 2,
-            height: "80vh",
+            height: "70vh",
             alignItems: "center",
           }}
         >
@@ -52,7 +52,7 @@ export default function App() {
                   0.3
                 )}, rgba(0,0,0,1) 100%)`,
           }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.6 }}
           animate={{
             opacity: theme ? 1 : 0.1, // Adjust the opacity values for the fade effect
           }}
@@ -61,9 +61,7 @@ export default function App() {
             container
             spacing={2}
             sx={{
-              mt: "2%",
-              padding: 2,
-              height: "80vh",
+              padding: "2%",
               alignItems: "center",
             }}
           >
@@ -75,6 +73,7 @@ export default function App() {
                   textAlign: "center",
                   textTransform: "uppercase",
                   letterSpacing: 3,
+                  padding: "2%",
                 }}
               >
                 LEADERBOARD

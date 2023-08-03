@@ -48,7 +48,7 @@ export default function CardSlider() {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 320,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

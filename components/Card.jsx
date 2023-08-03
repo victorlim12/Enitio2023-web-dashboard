@@ -16,7 +16,9 @@ const CustomCard = styled(motion("div"))(({ theme, clan }) => ({
   alignItems: "center",
   backdropFilter: "blur(15px)",
   borderRadius: 15,
-  boxShadow: `0 10px 6px 5px ${alpha(ClanMetadata[clan]["color"], 0.3)}`,
+  boxShadow: ClanMetadata[clan]
+    ? `0 10px 6px 5px ${alpha(ClanMetadata[clan]["color"], 0.3)}`
+    : "0 10px 6px 5px rgba(0,0,0,0)",
 }));
 
 export function DefaultCard({ children, sx }) {
@@ -36,7 +38,7 @@ export function ClanCard({ children, clan, rank, onClick, ...sx }) {
       variants={variants}
       whileHover={{ scale: 0.95 }}
       onClick={onClick}
-      clan={clan}
+      clan={clan ? clan : "invicta"}
       sx={{
         ...sx,
         background: `rgba(27,27,27,0.8)`,
@@ -50,8 +52,8 @@ export function ClanCard({ children, clan, rank, onClick, ...sx }) {
         </Typography>
         <Stack alignItems="center" sx={{ paddingX: "10%" }}>
           <Image
-            width={250}
-            height={250}
+            width={220}
+            height={220}
             src={ClanMetadata[clan]?.img}
             alt={clan}
           />
@@ -73,7 +75,7 @@ export function ClanCard({ children, clan, rank, onClick, ...sx }) {
             textAlign: "center",
           }}
         >
-          {ClanMetadata[clan]["desc"]}
+          {ClanMetadata[clan]?.desc}
         </Typography>
         {children}
       </Stack>

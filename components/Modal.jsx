@@ -10,18 +10,17 @@ const CustomModal = styled(Box)(({ theme, bg, clan }) => ({
   transform: "translate(-50%, -50%)",
   height: "fit-content",
   maxWidth: "100vw",
-  minWidth: "70vw",
+  minWidth: "90vw",
   maxHeight: "90vh",
-  padding: "3%",
   background: bg
     ? `${bg}`
     : `linear-gradient(248deg, #0a0014c6 32%, ${alpha(
-        properties[clan]["color"],
+        properties[clan]?.color,
         0.3
       )})`,
   backdropFilter: "blur(50px)",
   outline: "0.1em solid",
-  outlineColor: clan ? `${properties[clan]["color"]}` : "purple",
+  outlineColor: properties[clan] ? `${properties[clan]["color"]}` : "purple",
   boxShadow: 24,
   backgroundColor: "rgba(0,0,0,0.9)",
   borderRadius: 12,
