@@ -52,7 +52,7 @@ export function ClanCard({ children, clan, rank, onClick, ...sx }) {
           <Image
             width={250}
             height={250}
-            src={ClanMetadata[clan]["img"]}
+            src={ClanMetadata[clan]?.img}
             alt={clan}
           />
         </Stack>

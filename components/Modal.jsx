@@ -21,7 +21,7 @@ const CustomModal = styled(Box)(({ theme, bg, clan }) => ({
       )})`,
   backdropFilter: "blur(50px)",
   outline: "0.1em solid",
-  outlineColor: `${properties[clan]["color"]}`,
+  outlineColor: clan ? `${properties[clan]["color"]}` : "purple",
   boxShadow: 24,
   backgroundColor: "rgba(0,0,0,0.9)",
   borderRadius: 12,
