@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography, Stack } from "@mui/material";
 import { RankCard } from "../../../components/RankCard";
-import { AppContext } from "../../../components/AppContext";
+import { AppContext } from "../AppContext";
 import ClanModalPopup from "../../../components/Modal";
 import ToggleGroup from "../../../components/ToggleButton";
 

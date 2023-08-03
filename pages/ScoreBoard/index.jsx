@@ -1,10 +1,10 @@
 import React from "react";
-import LeaderBoard from "../../components/ScoreBoard/SubBlock/Leaderboard";
-import CardSlider from "../../components/ScoreBoard/SubBlock/CardSlider";
+import LeaderBoard from "./SubBlock/Leaderboard";
+import CardSlider from "./SubBlock/CardSlider";
 import { Box, Grid, Typography } from "@mui/material";
-import { AppContext, AppProvider } from "../../components/AppContext";
+import { AppContext, AppProvider } from "./AppContext";
 import { motion } from "framer-motion";
-import App from "../../components/ScoreBoard/App.jsx";
+import App from "./App";
 
 export default function Home() {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { AppContext } from "../../../components/AppContext";
+import { AppContext } from "../AppContext";
 import Slider from "react-slick";
 import { ClanCard } from "../../../components/Card";
 import "slick-carousel/slick/slick.css";

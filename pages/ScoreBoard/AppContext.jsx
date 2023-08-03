@@ -1,6 +1,6 @@
 // AppContext.js
 import React, { createContext, useState } from "react";
-import properties from "../config/prop-config.json";
+import properties from "../../config/prop-config.json";
 
 //extract data from each og
 function extractOG(arr) {
