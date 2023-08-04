@@ -53,9 +53,7 @@ export default function AppProvider({ children }) {
         setResult(res_array_clan);
         setOg(res_array_og);
         setTheme(properties[res_array_clan[0]]["color"]);
-        sleep(20).then(() => {
-          setLoading(false);
-        });
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
