@@ -19,7 +19,7 @@ export default function App() {
           sx={{
             mt: "2%",
             padding: 2,
-            height: "70vh",
+            height: "100vh",
             alignItems: "center",
           }}
         >
