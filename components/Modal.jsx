@@ -35,9 +35,9 @@ const BaseModal = styled(Box)(({ theme, bg }) => ({
   left: "50%",
   transform: "translate(-50%, -50%)",
   height: "fit-content",
-  maxWidth: "90vw",
+  maxWidth: "80vw",
   minWidth: "70vw",
-  maxHeight: "90vh",
+  maxHeight: "80vh",
 
   // background: bg
   //   ? `${bg}`

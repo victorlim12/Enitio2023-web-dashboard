@@ -52,7 +52,7 @@ export default function App() {
     // link.href = imageUrl;
     // link.download = "image.jpg";
     // link.click();
-    saveAs(imageUrl, "enitio-image");
+    saveAs(imageUrl.replace("export=view", "export=download"), "enitio-image");
   };
 
   return (
