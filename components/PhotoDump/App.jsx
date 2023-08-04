@@ -1,12 +1,8 @@
 import React from "react";
-import LeaderBoard from "./SubBlock/Leaderboard";
-import CardSlider from "./SubBlock/CardSlider";
 import { Grid, ImageList, ImageListItem, Typography } from "@mui/material";
-import { AppContext, AppProvider } from "../../components/AppContext";
 import { motion } from "framer-motion";
 import { alpha, styled } from "@mui/material/styles";
 import ThreeDotsWave from "../../components/LoadingAnimation";
-import Masonry from "@mui/lab/Masonry";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
