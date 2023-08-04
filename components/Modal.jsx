@@ -40,7 +40,9 @@ export default function ClanModalPopup({ open, setOpen, children, clan }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <CustomModal clan={clan}>{children}</CustomModal>
+        <CustomModal clan={clan} handleClose={handleClose}>
+          {children}
+        </CustomModal>
       </Modal>
     </>
   );
