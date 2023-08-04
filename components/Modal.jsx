@@ -48,12 +48,14 @@ const BaseModal = styled(Box)(({ theme, bg }) => ({
   backdropFilter: "blur(50px)",
   // outline: "0.1em solid",
   // outlineColor: "purple",
-  boxShadow: 24,
-  backgroundColor: "rgba(0,0,0,0.9)",
+  // boxShadow: 24,
+  // backgroundColor: "rgba(0,0,0,0.9)",
   borderRadius: 12,
   display: "flex",
+  outline: "none",
   alignItems: "center",
   p: 4,
+  zIndex: 2,
 }));
 
 export default function ClanModalPopup({ open, setOpen, children, clan }) {
@@ -66,6 +68,7 @@ export default function ClanModalPopup({ open, setOpen, children, clan }) {
       <Modal
         open={open}
         onClose={handleClose}
+        sx={{ backdropFilter: "blur(8px)" }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -83,6 +86,7 @@ export function BaseModalPopup({ open, setOpen, children }) {
   return (
     <>
       <Modal
+        sx={{ backdropFilter: "blur(8px)" }}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"

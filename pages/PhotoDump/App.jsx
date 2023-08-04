@@ -69,6 +69,7 @@ export default function App() {
             src={imageUrl}
             loading="lazy"
             style={{
+              borderRadius: 12,
               borderBottomLeftRadius: 4,
               borderBottomRightRadius: 4,
               display: "block",
