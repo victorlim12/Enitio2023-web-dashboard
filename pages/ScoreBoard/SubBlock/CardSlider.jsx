@@ -15,6 +15,10 @@ export default function CardSlider() {
     setOpen(true);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const { data, loading, result, setResult, theme, setTheme } =
     React.useContext(AppContext);
 
@@ -60,7 +64,7 @@ export default function CardSlider() {
   return (
     <div className="slider-container">
       <ClanModalPopup open={open} setOpen={setOpen} clan={clanName}>
-        <CardHighlight clan={clanName} />
+        <CardHighlight clan={clanName} handleClose={handleClose} />
       </ClanModalPopup>
       <Slider {...settings}>
         {result?.map((clan, idx) => (

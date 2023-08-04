@@ -30,7 +30,9 @@ const CustomModal = styled(Box)(({ theme, bg, clan }) => ({
 }));
 
 export default function ClanModalPopup({ open, setOpen, children, clan }) {
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
@@ -40,9 +42,7 @@ export default function ClanModalPopup({ open, setOpen, children, clan }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <CustomModal clan={clan} handleClose={handleClose}>
-          {children}
-        </CustomModal>
+        <CustomModal clan={clan}>{children}</CustomModal>
       </Modal>
     </>
   );

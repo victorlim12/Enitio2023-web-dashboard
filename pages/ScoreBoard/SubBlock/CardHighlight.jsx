@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Stack } from "@mui/material";
+import { Grid, Typography, Stack, Box } from "@mui/material";
 import { ClanCard } from "../../../components/Card";
 import { AppContext } from "../AppContext";
 import properties from "../../../config/prop-config.json";
@@ -12,32 +12,51 @@ export default function CardHighlight({ clan, handleClose }) {
   return (
     <>
       {clan ? (
-        <Grid container spacing={5} direction={"row"} sx={{ p: "4%" }}>
-          <IconButton aria-label="close" onClick={handleClose}>
+        <Box
+          sx={{
+            flexDirection: "column",
+            maxHeight: "90vh",
+            display: "flex",
+            overflowY: "scroll",
+          }}
+        >
+          <IconButton
+            sx={{ padding: 2, justifyContent: "flex-start" }}
+            aria-label="close"
+            onClick={handleClose}
+          >
             <CloseIcon />
           </IconButton>
-
-          <Grid item xs={12} md={6}>
-            <ClanCard rank={"1st"} clan={clan}></ClanCard>
+          <Grid container spacing={4} direction={"row"} sx={{ p: "4%" }}>
+            <Grid item xs={12} md={6}>
+              <ClanCard rank={"1st"} clan={clan}></ClanCard>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Typography
+                variant="h4"
+                fontWeight={600}
+                sx={{
+                  textTransform: "uppercase",
+                  letterSpacing: 3,
+                }}
+              >
+                {clan}
+              </Typography>
+              <br />
+              <Typography
+                variant="body1"
+                fontWeight={400}
+                sx={{
+                  letterSpacing: 3,
+                  overflowY: "scroll",
+                  maxHeight: "100%",
+                }}
+              >
+                {properties[clan]["block"]}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Typography
-              variant="h4"
-              fontWeight={600}
-              sx={{ textTransform: "uppercase", letterSpacing: 3 }}
-            >
-              {clan}
-            </Typography>
-            <br />
-            <Typography
-              variant="body1"
-              fontWeight={400}
-              sx={{ letterSpacing: 3 }}
-            >
-              {properties[clan]["block"]}
-            </Typography>
-          </Grid>
-        </Grid>
+        </Box>
       ) : (
         <></>
       )}
