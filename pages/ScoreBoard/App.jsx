@@ -51,6 +51,8 @@ export default function App() {
               : `radial-gradient(circle, rgba(0,0,0,1) 0%,  rgba(0,0,0,1) 0%,
                   0.3
                 )}, rgba(0,0,0,1) 100%)`,
+            minHeight: "92vh",
+            height: "100%",
           }}
           transition={{ delay: 0.6 }}
           animate={{
