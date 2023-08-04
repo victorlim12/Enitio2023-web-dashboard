@@ -10,8 +10,11 @@ import CardHighlight from "./CardHighlight";
 export default function CardSlider() {
   const [open, setOpen] = React.useState(false);
   const [clanName, setClan] = React.useState("");
-  const handleOpen = (clan) => {
+  const [rank, setRank] = React.useState("");
+
+  const handleOpen = (clan, idx) => {
     setClan(clan);
+    setRank(idx);
     setOpen(true);
   };
 
@@ -64,7 +67,7 @@ export default function CardSlider() {
   return (
     <div className="slider-container">
       <ClanModalPopup open={open} setOpen={setOpen} clan={clanName}>
-        <CardHighlight clan={clanName} handleClose={handleClose} />
+        <CardHighlight clan={clanName} handleClose={handleClose} rank={rank} />
       </ClanModalPopup>
       <Slider {...settings}>
         {result?.map((clan, idx) => (
@@ -72,7 +75,7 @@ export default function CardSlider() {
             key={idx}
             rank={idx + 1}
             clan={clan}
-            onClick={() => handleOpen(clan)}
+            onClick={() => handleOpen(clan, idx)}
           ></ClanCard>
         ))}
       </Slider>

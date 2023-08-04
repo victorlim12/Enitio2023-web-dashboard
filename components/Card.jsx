@@ -36,7 +36,9 @@ export function ClanCard({ children, clan, rank, onClick, ...sx }) {
       initial="initial"
       animate="animate"
       variants={variants}
-      whileHover={{ scale: 0.95 }}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.9 }}
+      transition={{ type: "spring", stiffness: 400, damping: 30 }}
       onClick={onClick}
       clan={clan ? clan : "invicta"}
       sx={{

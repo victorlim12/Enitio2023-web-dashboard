@@ -10,6 +10,11 @@ export default function ButtonCard({ title, content, sx, link, hoverColor }) {
       backgroundColor: hoverColor,
       transition: { duration: 0.2 },
     },
+    tap: {
+      scale: 1.05,
+      backgroundColor: hoverColor,
+      transition: { duration: 0.2 },
+    },
   };
 
   return (
@@ -19,8 +24,10 @@ export default function ButtonCard({ title, content, sx, link, hoverColor }) {
         sx={sx}
         initial="initial"
         animate="animate"
+        transition={{ type: "spring", stiffness: 400, damping: 30 }}
         variants={variants}
         whileHover="hover"
+        whileTap="tap"
       >
         <CardContent>
           <Typography
