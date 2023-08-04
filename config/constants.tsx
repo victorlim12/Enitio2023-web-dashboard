@@ -48,15 +48,15 @@ export const CardNav = [
   },
   {
     title: "Garage at EEE",
-    content: "Guess who initiated ENITIO? Join us as an ambassador.",
-    link: "/ScoreBoard",
+    content: "Guess who initiated ENITIO? Learn more about Garage@EEE",
+    link: "https://linktr.ee/garage_eee",
     color: "#00002f",
   },
   {
     title: "Instagram",
     content: "Stay Connected? See you in ENITIO 2024",
-    link: "/ScoreBoard",
-    color: "#00002f",
+    link: "https://www.instagram.com/enitio_ntu/",
+    color: "#000f2f",
   },
 ];
 
@@ -68,7 +68,7 @@ export const montserrat = Montserrat({
 });
 
 // Create a theme instance.
-let defaultTheme = createTheme({
+const defaultTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
