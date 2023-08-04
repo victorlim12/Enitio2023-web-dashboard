@@ -17,21 +17,27 @@ export default function CardHighlight({ clan, rank, handleClose }) {
             flexDirection: "column",
             maxHeight: "90vh",
             display: "flex",
-            overflowY: "scroll",
           }}
         >
-          <IconButton
-            sx={{ padding: 2, justifyContent: "flex-start" }}
-            aria-label="close"
-            onClick={handleClose}
+          <Box sx={{ flexShrink: 1 }}>
+            <IconButton
+              sx={{ padding: 2 }}
+              aria-label="close"
+              onClick={handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
+
+          <Grid
+            container
+            direction={"row"}
+            sx={{ p: "4%", flex: 1, overflowY: "scroll" }}
           >
-            <CloseIcon />
-          </IconButton>
-          <Grid container spacing={4} direction={"row"} sx={{ p: "4%" }}>
             <Grid item xs={12} md={6}>
-              <ClanCard rank={"1st"} clan={clan}></ClanCard>
+              <ClanCard rank={rank + 1} clan={clan}></ClanCard>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} sx={{ p: 4 }}>
               <Typography
                 variant="h4"
                 fontWeight={600}
@@ -54,10 +60,6 @@ export default function CardHighlight({ clan, rank, handleClose }) {
               >
                 {properties[clan]["block"]}
               </Typography>
-            </Grid>
-
-            <Grid item xs={12} md={6}>
-              <ClanCard rank={rank + 1} clan={clan}></ClanCard>
             </Grid>
           </Grid>
         </Box>
