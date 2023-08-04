@@ -62,6 +62,7 @@ export default function App() {
             flexDirection: "column",
             display: "flex",
             justifyContent: "center",
+            width: "100%",
           }}
         >
           <img
