@@ -29,6 +29,33 @@ const CustomModal = styled(Box)(({ theme, bg, clan }) => ({
   p: 4,
 }));
 
+const BaseModal = styled(Box)(({ theme, bg }) => ({
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  height: "fit-content",
+  maxWidth: "90vw",
+  minWidth: "70vw",
+  maxHeight: "90vh",
+
+  // background: bg
+  //   ? `${bg}`
+  //   : `linear-gradient(248deg, #0a0014c6 32%, ${alpha(
+  //       theme.palette.primary.main,
+  //       0.3
+  //     )})`,
+  backdropFilter: "blur(50px)",
+  // outline: "0.1em solid",
+  // outlineColor: "purple",
+  boxShadow: 24,
+  backgroundColor: "rgba(0,0,0,0.9)",
+  borderRadius: 12,
+  display: "flex",
+  alignItems: "center",
+  p: 4,
+}));
+
 export default function ClanModalPopup({ open, setOpen, children, clan }) {
   const handleClose = () => {
     setOpen(false);
@@ -43,6 +70,25 @@ export default function ClanModalPopup({ open, setOpen, children, clan }) {
         aria-describedby="modal-modal-description"
       >
         <CustomModal clan={clan}>{children}</CustomModal>
+      </Modal>
+    </>
+  );
+}
+
+export function BaseModalPopup({ open, setOpen, children }) {
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <BaseModal>{children}</BaseModal>
       </Modal>
     </>
   );

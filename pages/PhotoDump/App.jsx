@@ -1,13 +1,34 @@
 import React from "react";
-import { Grid, ImageList, ImageListItem, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  ImageList,
+  ImageListItem,
+  Typography,
+} from "@mui/material";
 import { motion } from "framer-motion";
 import { alpha, styled } from "@mui/material/styles";
 import ThreeDotsWave from "../../components/LoadingAnimation";
+import { BaseModalPopup } from "../../components/Modal";
+import { saveAs } from "file-saver";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default function App() {
   const [data, setData] = React.useState({});
+  const [imageUrl, setImageUrl] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = (url) => {
+    setImageUrl(url);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const [loading, setLoading] = React.useState(true);
   function fetchData() {
     fetch(
@@ -26,8 +47,39 @@ export default function App() {
   }
   fetchData();
 
+  const handleDownload = () => {
+    // const link = document.createElement("a");
+    // link.href = imageUrl;
+    // link.download = "image.jpg";
+    // link.click();
+    saveAs(imageUrl, "enitio-image");
+  };
+
   return (
     <>
+      <BaseModalPopup open={open} setOpen={setOpen}>
+        <Box
+          sx={{
+            flexDirection: "column",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            src={imageUrl}
+            loading="lazy"
+            style={{
+              borderBottomLeftRadius: 4,
+              borderBottomRightRadius: 4,
+              display: "block",
+              width: "100%",
+            }}
+          />
+          <Button variant="outlined">
+            <Typography onClick={handleDownload}>Download Image</Typography>
+          </Button>
+        </Box>
+      </BaseModalPopup>
       {loading ? (
         <Grid
           container
@@ -82,6 +134,9 @@ export default function App() {
                     borderBottomRightRadius: 4,
                     display: "block",
                     width: "100%",
+                  }}
+                  onClick={() => {
+                    handleOpen(item);
                   }}
                 />
               </ImageListItem>
