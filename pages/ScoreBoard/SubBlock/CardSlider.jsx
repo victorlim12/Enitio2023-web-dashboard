@@ -1,5 +1,5 @@
 import React from "react";
-import { AppContext } from "../../../components/AppContext";
+import { AppContext } from "../AppContext";
 import Slider from "react-slick";
 import { ClanCard } from "../../../components/Card";
 import "slick-carousel/slick/slick.css";
@@ -48,7 +48,7 @@ export default function CardSlider() {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 320,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -63,7 +63,7 @@ export default function CardSlider() {
         <CardHighlight clan={clanName} />
       </ClanModalPopup>
       <Slider {...settings}>
-        {result.map((clan, idx) => (
+        {result?.map((clan, idx) => (
           <ClanCard
             key={idx}
             rank={idx + 1}

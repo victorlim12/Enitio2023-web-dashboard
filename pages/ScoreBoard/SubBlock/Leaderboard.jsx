@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography, Stack } from "@mui/material";
 import { RankCard } from "../../../components/RankCard";
-import { AppContext } from "../../../components/AppContext";
+import { AppContext } from "../AppContext";
 import ClanModalPopup from "../../../components/Modal";
 import ToggleGroup from "../../../components/ToggleButton";
 
@@ -36,13 +36,12 @@ export default function LeaderBoard() {
       >
         {option === "Clan" ? (
           <Reorder.Group axis="y" values={result} onReorder={setResult}>
-            {result.map((clan, key) => (
+            {result?.map((clan, key) => (
               <Reorder.Item key={clan} value={clan} drag={false}>
-                <ClanModalPopup open={open} setOpen={setOpen} clan={clanName} />
                 <Grid item md={12} xs={12} sx={{ p: "1%" }}>
                   <RankCard
                     key={clan}
-                    color={properties[clan]["color"]}
+                    color={properties[clan]?.color}
                     style={{ padding: "2%" }}
                     onClick={() => handleOpen(clan)}
                   >

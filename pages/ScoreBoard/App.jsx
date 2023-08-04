@@ -2,13 +2,13 @@ import React from "react";
 import LeaderBoard from "./SubBlock/Leaderboard";
 import CardSlider from "./SubBlock/CardSlider";
 import { Grid, Typography } from "@mui/material";
-import { AppContext, AppProvider } from "../../components/AppContext";
+import { AppContext } from "./AppContext";
 import { motion } from "framer-motion";
 import { alpha, styled } from "@mui/material/styles";
 import ThreeDotsWave from "../../components/LoadingAnimation";
 
 export default function App() {
-  const { theme, setTheme, loading } = React.useContext(AppContext);
+  const { theme, loading } = React.useContext(AppContext);
 
   return (
     <>
@@ -19,7 +19,7 @@ export default function App() {
           sx={{
             mt: "2%",
             padding: 2,
-            height: "80vh",
+            height: "70vh",
             alignItems: "center",
           }}
         >
@@ -43,12 +43,16 @@ export default function App() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           style={{
-            background: `radial-gradient(circle, rgba(0,0,0,1) 0%, ${alpha(
-              theme,
-              0.3
-            )}, rgba(0,0,0,1) 100%)`,
+            background: theme
+              ? `radial-gradient(circle, rgba(0,0,0,1) 0%, ${alpha(
+                  theme,
+                  0.3
+                )}, rgba(0,0,0,1) 100%)`
+              : `radial-gradient(circle, rgba(0,0,0,1) 0%,  rgba(0,0,0,1) 0%,
+                  0.3
+                )}, rgba(0,0,0,1) 100%)`,
           }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.6 }}
           animate={{
             opacity: theme ? 1 : 0.1, // Adjust the opacity values for the fade effect
           }}
@@ -57,9 +61,7 @@ export default function App() {
             container
             spacing={2}
             sx={{
-              mt: "2%",
-              padding: 2,
-              height: "80vh",
+              padding: "2%",
               alignItems: "center",
             }}
           >
@@ -71,6 +73,7 @@ export default function App() {
                   textAlign: "center",
                   textTransform: "uppercase",
                   letterSpacing: 3,
+                  padding: "2%",
                 }}
               >
                 LEADERBOARD

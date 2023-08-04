@@ -1,6 +1,6 @@
 // AppContext.js
 import React, { createContext, useState } from "react";
-import properties from "../config/prop-config.json";
+import properties from "../../config/prop-config.json";
 
 //extract data from each og
 function extractOG(arr) {
@@ -21,10 +21,10 @@ function sortRank(arr) {
 }
 
 //initialize context
-const AppContext = createContext();
+export const AppContext = createContext({});
 
 //Provider wrapper for Leaderboard page
-const AppProvider = ({ children }) => {
+export default function AppProvider({ children }) {
   const [loading, setLoading] = React.useState(true);
   const [data, setData] = React.useState([]);
   const [result, setResult] = React.useState([]);
@@ -35,11 +35,10 @@ const AppProvider = ({ children }) => {
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   function fetchData() {
-    fetch("http://159.223.38.56:8000/api/data")
+    fetch(`${process.env.NEXT_PUBLIC_SCORESHEET}/api/data`)
       .then((response) => response.json())
       .then((data) => {
         setData(data); // Set the fetched data into the state
-
         const res = Object.entries(data).map(([name, obj]) => ({
           name,
           ...obj,
@@ -54,7 +53,7 @@ const AppProvider = ({ children }) => {
         setResult(res_array_clan);
         setOg(res_array_og);
         setTheme(properties[res_array_clan[0]]["color"]);
-        sleep(1000).then(() => {
+        sleep(20).then(() => {
           setLoading(false);
         });
       })
@@ -95,6 +94,4 @@ const AppProvider = ({ children }) => {
       {children}
     </AppContext.Provider>
   );
-};
-
-export { AppContext, AppProvider };
+}
