@@ -36,15 +36,15 @@ export const CardNav = [
   {
     title: "Participant Handbook",
     content: "This, honestly, might be all you need :)",
-    link: "/ScoreBoard",
-    color: "#00002f",
+    link: "https://bit.ly/ENITIO23-PARTICIPANT_HANDBOOK",
+    color: "#FFA500",
   },
   {
     title: "Photo DUMP",
     content:
       "You might be able to view your photos here, smile to the photographers.",
-    link: "/ScoreBoard",
-    color: "#00002f",
+    link: "/PhotoDump",
+    color: "#33B864",
   },
   {
     title: "Garage at EEE",
@@ -56,7 +56,7 @@ export const CardNav = [
     title: "Instagram",
     content: "Stay Connected? See you in ENITIO 2024",
     link: "https://www.instagram.com/enitio_ntu/",
-    color: "#000f2f",
+    color: "#FE019A",
   },
 ];
 
