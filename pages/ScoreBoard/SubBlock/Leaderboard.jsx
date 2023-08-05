@@ -32,7 +32,7 @@ export default function LeaderBoard() {
         setOption={setOption}
       />
       <div
-        className="visible-scrollbar"
+        className="invisible-scrollbar"
         style={{ overflowY: "scroll", minHeight: "27rem", maxHeight: "27rem" }}
       >
         {option === "Clan" ? (

@@ -136,10 +136,7 @@ li {
 .visible-scrollbar,
 .invisible-scrollbar,
 .mostly-customized-scrollbar {
-  display: block;
-  width: 10em;
-  overflow: auto;
-  height: 2em;
+  overflow-y: scroll;
 }
 
 .invisible-scrollbar::-webkit-scrollbar {
