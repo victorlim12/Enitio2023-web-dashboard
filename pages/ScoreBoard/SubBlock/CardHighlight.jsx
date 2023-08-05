@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Stack, Box } from "@mui/material";
+import { Grid, Typography, Button, Box } from "@mui/material";
 import { ClanCard } from "../../../components/Card";
 import { AppContext } from "../AppContext";
 import properties from "../../../config/prop-config.json";
@@ -59,6 +59,21 @@ export default function CardHighlight({ clan, rank, handleClose }) {
                 }}
               >
                 {properties[clan]["block"]}
+              </Typography>
+              <br />
+              <Button disabled variant="contained">
+                Score Breakdown*
+              </Button>
+              <Typography
+                variant="body2"
+                fontWeight={400}
+                sx={{
+                  letterSpacing: 3,
+                  overflowY: "scroll",
+                  maxHeight: "100%",
+                }}
+              >
+                *coming to you on Day 2
               </Typography>
             </Grid>
           </Grid>

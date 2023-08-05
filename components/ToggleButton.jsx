@@ -11,7 +11,7 @@ export default function ToggleGroup({ MultiOption, option, setOption }) {
   return (
     <>
       <ToggleButtonGroup
-        color="primary"
+        color="warning"
         value={option}
         exclusive
         onChange={handleChange}
