@@ -5,6 +5,7 @@ import { AppContext } from "../AppContext";
 import properties from "../../../config/prop-config.json";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import { RankMapping } from "../../../config/constants";
 
 export default function CardHighlight({ clan, rank, handleClose }) {
   const { data, loading, result, setResult } = React.useContext(AppContext);
@@ -47,6 +48,17 @@ export default function CardHighlight({ clan, rank, handleClose }) {
                 }}
               >
                 {clan}
+              </Typography>
+              <Typography
+                variant="h5"
+                fontWeight={600}
+                sx={{
+                  textTransform: "uppercase",
+                  letterSpacing: 3,
+                  color: `${properties[clan]["color"]}`,
+                }}
+              >
+                #{RankMapping[rank + 1]}
               </Typography>
               <br />
               <Typography

@@ -11,10 +11,10 @@ export const menu = [
   //   title: "Past Event",
   //   url: "/past-events",
   // },
-  // {
-  //   title: "Photos",
-  //   url: "/photos",
-  // },
+  {
+    title: "Home",
+    url: "/",
+  },
   {
     title: "Scores",
     url: "/ScoreBoard",
@@ -66,6 +66,14 @@ export const montserrat = Montserrat({
   display: "swap",
   fallback: ["Helvetica", "Arial", "sans-serif"],
 });
+
+export const RankMapping = {
+  1: "1st",
+  2: "2nd",
+  3: "3rd",
+  4: "4th",
+  5: "5th",
+};
 
 // Create a theme instance.
 const defaultTheme = createTheme({

@@ -85,6 +85,10 @@ body {
   overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -117,6 +121,7 @@ li {
 }
 
 .slider-container .slick-slide {
+  padding: 0.8rem;
   margin: 0 12px;
 }
 

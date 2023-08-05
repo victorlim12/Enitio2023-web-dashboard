@@ -4,6 +4,7 @@ import { alpha, styled } from "@mui/material/styles";
 import { Grid, Typography, Stack, Card } from "@mui/material";
 import ClanMetadata from "../config/prop-config.json";
 import Image from "next/image";
+import { RankMapping } from "../config/constants";
 
 const CustomCard = styled(motion("div"))(({ theme, clan }) => ({
   background: `linear-gradient(to right, rgba(0,0,0,0.3),${alpha(
@@ -50,7 +51,7 @@ export function ClanCard({ children, clan, rank, onClick, ...sx }) {
     >
       <Stack alignItems="center" sx={{ width: "100%" }}>
         <Typography fontWeight={700} sx={{ width: "100%" }}>
-          {rank}
+          {RankMapping[rank]}
         </Typography>
         <Stack alignItems="center" sx={{ paddingX: "10%" }}>
           <Image
@@ -60,7 +61,6 @@ export function ClanCard({ children, clan, rank, onClick, ...sx }) {
             alt={clan}
           />
         </Stack>
-
         <Typography
           variant={"h5"}
           fontWeight={700}
