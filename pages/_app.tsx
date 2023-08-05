@@ -2,6 +2,7 @@ import "./globals.css";
 import Layout from "./layout";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import createEmotionCache from "../config/createEmotionCache";
+import { Analytics } from '@vercel/analytics/react';
 import Head from "next/head";
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -26,6 +27,7 @@ export default function RootLayout({
       </Head>
       <Layout>
         <Component {...pageProps} />
+        <Analytics />
       </Layout>
     </CacheProvider>
   );
