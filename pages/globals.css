@@ -121,7 +121,7 @@ li {
 }
 
 .slider-container .slick-slide {
-  padding: 0.8rem;
+  padding: 0.2rem;
   margin: 0 12px;
 }
 
@@ -131,4 +131,17 @@ li {
   margin: 5px;
   background-color: #007bff; /* You can change the color of the dots here */
   border-radius: 50%;
+}
+
+.visible-scrollbar,
+.invisible-scrollbar,
+.mostly-customized-scrollbar {
+  display: block;
+  width: 10em;
+  overflow: auto;
+  height: 2em;
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
 }
