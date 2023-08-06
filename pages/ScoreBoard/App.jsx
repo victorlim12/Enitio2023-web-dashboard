@@ -9,7 +9,6 @@ import LoadingScreen from "../../components/LoadingScreen";
 
 export default function App() {
   const { theme, loading } = React.useContext(AppContext);
-  console.log(loading);
 
   return (
     <>

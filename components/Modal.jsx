@@ -36,20 +36,8 @@ const BaseModal = styled(Box)(({ theme, bg }) => ({
   transform: "translate(-50%, -50%)",
   height: "fit-content",
   maxWidth: "80vw",
-  minWidth: "70vw",
   maxHeight: "80vh",
-
-  // background: bg
-  //   ? `${bg}`
-  //   : `linear-gradient(248deg, #0a0014c6 32%, ${alpha(
-  //       theme.palette.primary.main,
-  //       0.3
-  //     )})`,
   backdropFilter: "blur(50px)",
-  // outline: "0.1em solid",
-  // outlineColor: "purple",
-  // boxShadow: 24,
-  // backgroundColor: "rgba(0,0,0,0.9)",
   borderRadius: 12,
   display: "flex",
   outline: "none",

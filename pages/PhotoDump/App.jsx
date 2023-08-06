@@ -36,15 +36,16 @@ export default function App() {
       .then((response) => response.json())
       .then((data) => {
         setData(data); // Set the fetched data into the state
-        sleep(1000).then(() => {
-          setLoading(false);
-        });
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }
-  fetchData();
+
+  React.useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleDownload = () => {
     // const link = document.createElement("a");
@@ -65,18 +66,18 @@ export default function App() {
             flexDirection: "column",
             display: "flex",
             justifyContent: "center",
-            width: "100%",
+            minWidth: "fit-content",
           }}
         >
           <img
             src={imageUrl.downloadURL}
             loading="lazy"
             style={{
+              maxHeight: "80vh",
               borderRadius: 12,
               borderBottomLeftRadius: 4,
               borderBottomRightRadius: 4,
               display: "block",
-              width: "100%",
             }}
           />
           <Button variant="outlined">
