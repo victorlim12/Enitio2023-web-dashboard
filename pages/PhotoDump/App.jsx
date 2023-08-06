@@ -31,7 +31,7 @@ export default function App() {
   const [loading, setLoading] = React.useState(true);
   function fetchData() {
     fetch(
-      "https://script.google.com/macros/s/AKfycbyNboOtoOimf8Y-VRBvAXhUCnnTyDImBhfYJKNGe9zn1sATxIFHCe7k0gz4xi0X2b30gw/exec"
+      "https://script.google.com/macros/s/AKfycby4QpNoZbGwgdQKPYWovEajmqtRT_gR7IM8vr-H_h7MNmTOorsDQ3nFBG-Vn-qk2SVK2Q/exec"
     )
       .then((response) => response.json())
       .then((data) => {
@@ -51,7 +51,10 @@ export default function App() {
     // link.href = imageUrl;
     // link.download = "image.jpg";
     // link.click();
-    saveAs(imageUrl.replace("export=view", "export=download"), "enitio-image");
+    saveAs(
+      imageUrl.downloadURL.replace("export=view", "export=download"),
+      "enitio-image"
+    );
   };
 
   return (
@@ -66,7 +69,7 @@ export default function App() {
           }}
         >
           <img
-            src={imageUrl}
+            src={imageUrl.downloadURL}
             loading="lazy"
             style={{
               borderRadius: 12,
@@ -103,8 +106,7 @@ export default function App() {
             {data.map((item, index) => (
               <ImageListItem key={index}>
                 <img
-                  src={`${item}&w=162&auto=format`}
-                  srcSet={`${item}&w=162&auto=format&dpr=2 2x`}
+                  src={`${item.previewURL}`}
                   loading="lazy"
                   style={{
                     borderBottomLeftRadius: 4,
