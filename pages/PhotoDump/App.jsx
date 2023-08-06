@@ -11,13 +11,15 @@ import { motion } from "framer-motion";
 import LoadingScreen from "../../components/LoadingScreen";
 import { BaseModalPopup } from "../../components/Modal";
 import { saveAs } from "file-saver";
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function App() {
   const [data, setData] = React.useState({});
   const [imageUrl, setImageUrl] = React.useState("");
   const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
+  const [numCols, setNumCols] = React.useState(3); // Default number of columns
 
   const handleOpen = (url) => {
     setImageUrl(url);
@@ -28,11 +30,8 @@ export default function App() {
     setOpen(false);
   };
 
-  const [loading, setLoading] = React.useState(true);
   function fetchData() {
-    fetch(
-      "https://script.google.com/macros/s/AKfycbzOv_3cEzBYm5ukT_Uo4KPe8e8mr75cyFun4VJoVVRGg0PYFBUTSO1faYc-LtPvySHkdQ/exec"
-    )
+    fetch(`${process.env.NEXT_PUBLIC_IMAGELINK}`)
       .then((response) => response.json())
       .then((data) => {
         setData(data); // Set the fetched data into the state
@@ -43,15 +42,31 @@ export default function App() {
       });
   }
 
+  function updateCols() {
+    const screenWidth = window.innerWidth;
+    console.log(screenWidth);
+    if (screenWidth >= 1200) {
+      console.log("im here");
+      setNumCols(4); // Adjust for larger screens
+    } else if (screenWidth >= 800) {
+      setNumCols(3);
+    } else {
+      setNumCols(2);
+    }
+  }
+
   React.useEffect(() => {
     fetchData();
+
+    window.addEventListener("resize", updateCols);
+    updateCols();
+
+    return () => {
+      window.removeEventListener("resize", updateCols);
+    };
   }, []);
 
   const handleDownload = () => {
-    // const link = document.createElement("a");
-    // link.href = imageUrl;
-    // link.download = "image.jpg";
-    // link.click();
     saveAs(
       imageUrl.downloadURL.replace("export=view", "export=download"),
       "enitio-image"
@@ -69,11 +84,22 @@ export default function App() {
             minWidth: "fit-content",
           }}
         >
+          <Box sx={{ flexShrink: 1 }}>
+            <IconButton
+              sx={{ padding: 1 }}
+              aria-label="close"
+              onClick={handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
+
           <img
             src={imageUrl.downloadURL}
             loading="lazy"
             style={{
               maxHeight: "80vh",
+              maxWidth: "80vw",
               borderRadius: 12,
               borderBottomLeftRadius: 4,
               borderBottomRightRadius: 4,
@@ -92,10 +118,6 @@ export default function App() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           style={{
-            // background: `radial-gradient(circle, rgba(0,0,0,1) 0%, ${alpha(
-            //   theme,
-            //   0.3
-            // )}, rgba(0,0,0,1) 100%)`,
             padding: 16,
           }}
           transition={{ delay: 0.5 }}
@@ -103,7 +125,11 @@ export default function App() {
             opacity: 0.1, // Adjust the opacity values for the fade effect
           }}
         >
-          <ImageList variant="masonry" cols={4} gap={8}>
+          <Typography variant="h6" textAlign={"center"}>
+            Click on the images and download them! Enjoy 😊
+          </Typography>
+          <br />
+          <ImageList variant="masonry" cols={numCols} gap={8}>
             {data.map((item, index) => (
               <ImageListItem key={index}>
                 <img
