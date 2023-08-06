@@ -31,7 +31,7 @@ export default function App() {
   const [loading, setLoading] = React.useState(true);
   function fetchData() {
     fetch(
-      "https://script.google.com/macros/s/AKfycby4QpNoZbGwgdQKPYWovEajmqtRT_gR7IM8vr-H_h7MNmTOorsDQ3nFBG-Vn-qk2SVK2Q/exec"
+      "https://script.google.com/macros/s/AKfycbzOv_3cEzBYm5ukT_Uo4KPe8e8mr75cyFun4VJoVVRGg0PYFBUTSO1faYc-LtPvySHkdQ/exec"
     )
       .then((response) => response.json())
       .then((data) => {
