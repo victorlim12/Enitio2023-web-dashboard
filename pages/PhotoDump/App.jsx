@@ -95,7 +95,7 @@ export default function App() {
           </Box>
 
           <img
-            src={imageUrl.downloadURL}
+            src={imageUrl.previewURL.replace("500", "1000")}
             loading="lazy"
             style={{
               maxHeight: "80vh",
