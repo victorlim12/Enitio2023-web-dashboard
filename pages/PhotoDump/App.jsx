@@ -95,11 +95,7 @@ export default function App() {
           </Box>
 
           <img
-<<<<<<< Updated upstream
             src={imageUrl.previewURL?.replace("=w500-iv1", "=w1000-iv1")}
-=======
-            src={imageUrl.previewURL}
->>>>>>> Stashed changes
             loading="lazy"
             style={{
               maxHeight: "80vh",

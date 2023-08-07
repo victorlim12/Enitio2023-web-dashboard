@@ -16,11 +16,12 @@ export default function PromoPopUp() {
 
   React.useEffect(() => {
     const hasSeenPopup = localStorage.getItem("hasSeenPopup");
+    console.log(hasSeenPopup);
     const tokenExpiresAt = localStorage.getItem("tokenExpiresAt");
 
     if (!hasSeenPopup) {
       setShowPopup(true);
-      const tokenExpiresIn = 10; // Token validity duration in seconds (e.g., 1 hour)
+      const tokenExpiresIn = 3600; // Token validity duration in seconds (e.g., 1 hour)
       const expirationTimestamp = new Date().getTime() + tokenExpiresIn * 1000;
       localStorage.setItem("hasSeenPopup", "true");
       localStorage.setItem("tokenExpiresAt", expirationTimestamp);
@@ -51,7 +52,7 @@ export default function PromoPopUp() {
             flexDirection: "column",
             display: "flex",
             justifyContent: "center",
-            minWidth: "50vw",
+            minWidth: "40vw",
             padding: "1%",
           }}
         >
@@ -64,6 +65,9 @@ export default function PromoPopUp() {
               <CloseIcon />
             </IconButton>
           </Box>
+          <Typography variant="body2" fontWeight={600} color={"primary"}>
+            E-CORP Ads Engine
+          </Typography>
           <Typography variant="h6">
             Garage Recruitment Happening Now! 🚀
           </Typography>
