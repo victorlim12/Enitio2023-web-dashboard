@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useInView } from 'react-intersection-observer';
-import {
-  Box,
-  Button,
-  Grid,
-  ImageList,
-  ImageListItem,
-  Typography,
-  CircularProgress,
-} from "@mui/material";
+import React from "react";
+import { Box, Button, ImageList, ImageListItem, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import LoadingScreen from "../../components/LoadingScreen";
 import { BaseModalPopup } from "../../components/Modal";
 import { saveAs } from "file-saver";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+<<<<<<< HEAD
 
 export default function App() {
 <<<<<<< HEAD
@@ -30,6 +22,23 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
 >>>>>>> 252c064 (detect intersection observer for photodump load)
+=======
+import { useInView } from 'react-intersection-observer';
+
+export default function App() {
+  const [data, setData] = React.useState([]);
+  const [imageUrl, setImageUrl] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
+  const [numCols, setNumCols] = React.useState(3);
+  const [page, setPage] = React.useState(1);
+  const [initialLoad, setInitialLoad] = React.useState(true);
+  const [hasMore, setHasMore] = React.useState(true);
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
+>>>>>>> 5a3b8d4 (adding infinity scroll)
 
   const handleOpen = (url) => {
     setImageUrl(url);
@@ -40,6 +49,7 @@ export default function App() {
     setOpen(false);
   };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   function fetchData() {
     fetch(`${process.env.NEXT_PUBLIC_IMAGELINK}`)
@@ -60,12 +70,36 @@ export default function App() {
           setLoading(false);
         });
 >>>>>>> 252c064 (detect intersection observer for photodump load)
+=======
+  function fetchData() {
+    if (!hasMore) return; 
+    
+    setLoading(true);
+    
+    fetch(`https://script.googleusercontent.com/macros/echo?user_content_key=hm002UyJMx3rtINBMSzK0FXP7XPZtsMZjJ5LYPD2CBG4iDztZolWK3M_8a2Rmh0nsG-ByOnkn8Qy2rC1dZqdW-wkkZ-F3Ayam5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnPfcfYrzdPADlpyBo5kGkkcGLYhz7EvpYIWqzVMMqHsIPZkbz4p-ulZr_f7RY3xhQqlPO2msmUhRWUI-H7XLBIZd3IPPwpL8fNz9Jw9Md8uu&lib=MO9gi-yM9lKTwGm3j1ZgAufvfWl9XrZCQ`)
+    
+      .then(response => response.json())
+      .then(newData => {
+        const limitedData = newData.slice(0, 10 * page);
+
+        if (limitedData && limitedData.length > 0) 
+        {
+          setData((prevData) => [...prevData, ...limitedData]);
+        } 
+        else 
+        {
+          setHasMore(false);
+        }
+      setLoading(false);
+      setInitialLoad(false); // After the first load, set this to false
+>>>>>>> 5a3b8d4 (adding infinity scroll)
       })
-      .catch((error) => {
+      .catch(error => {
         console.error("Error fetching data:", error);
       });
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   function updateCols() {
     const screenWidth = window.innerWidth;
@@ -118,16 +152,48 @@ export default function App() {
 
   // console.log("inView", inView);
   useEffect(() => {
+=======
+  React.useEffect(() => {
+>>>>>>> 5a3b8d4 (adding infinity scroll)
     if (inView) {
-      loadMore();
+      setPage(prevPage => prevPage + 1);
     }
   }, [inView]);
+
+  React.useEffect(() => {
+    fetchData();
+  }, [page]);
+
+  function updateCols() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= 1200) {
+      setNumCols(4);
+    } else if (screenWidth >= 800) {
+      setNumCols(3);
+    } else {
+      setNumCols(2);
+    }
+  }
+
+  React.useEffect(() => {
+    window.addEventListener("resize", updateCols);
+    updateCols();
+    return () => {
+      window.removeEventListener("resize", updateCols);
+    };
+  }, []);
+
+  const handleDownload = () => {
+    saveAs(
+      imageUrl.replace("export=view", "export=download"),
+      "image"
+    );
+  };
 
   return (
     <>
       <BaseModalPopup open={open} setOpen={setOpen}>
         <Box
-        
           sx={{
             flexDirection: "column",
             display: "flex",
@@ -144,9 +210,14 @@ export default function App() {
               <CloseIcon />
             </IconButton>
           </Box>
+<<<<<<< HEAD
 
           <img
             src={imageUrl.previewURL?.replace("=w500-iv1", "=w1000-iv1")}
+=======
+          <img
+          src={imageUrl.previewURL?.replace("=w500-iv1", "=w1000-iv1")}
+>>>>>>> 5a3b8d4 (adding infinity scroll)
             loading="lazy"
             style={{
               maxHeight: "80vh",
@@ -162,28 +233,32 @@ export default function App() {
           </Button>
         </Box>
       </BaseModalPopup>
-      {/* {loading ? (
-        // <LoadingScreen />
-      ) : ( */}
+      {initialLoad ? (
+        <LoadingScreen />
+      ) : (
         <motion.div
           initial={{ opacity: 0 }}
-          style={{
-            padding: 16,
-          }}
+          style={{ padding: 16 }}
           transition={{ delay: 0.5 }}
-          animate={{
-            opacity: 1,
-          }}
+          animate={{ opacity: 1 }}
         >
           <Typography variant="h6" textAlign={"center"}>
             Click on the images and download them! Enjoy 😊
           </Typography>
+<<<<<<< HEAD
           <br />
+=======
+
+>>>>>>> 5a3b8d4 (adding infinity scroll)
           <ImageList variant="masonry" cols={numCols} gap={8}>
             {data.map((item, index) => (
               <ImageListItem key={index}>
                 <img
+<<<<<<< HEAD
                   src={`${item.previewURL}`}
+=======
+                  src={item.previewURL}
+>>>>>>> 5a3b8d4 (adding infinity scroll)
                   loading="lazy"
                   style={{
                     borderBottomLeftRadius: 4,
@@ -191,33 +266,21 @@ export default function App() {
                     display: "block",
                     width: "100%",
                   }}
-                  onClick={() => {
-                    handleOpen(item);
-                  }}
+                  onClick={() => handleOpen(item.previewURL)}
                 />
               </ImageListItem>
+              
             ))}
           </ImageList>
-          <div ref={ref}>
-
-          {loading &&  <Box 
-          sx={{ 
-            position: 'fixed', 
-            top: 0, 
-            left: 0, 
-            right: 0, 
-            bottom: 0, 
-            display: 'flex', 
-            justifyContent: 'center', 
-            alignItems: 'center', 
-            backgroundColor: 'rgba(0, 0, 0, 0.3)', 
-            zIndex: 1000 
-          }}>
-          <CircularProgress />
-        </Box>}
-          </div>
+          <div ref={ref} style={{ height: '1px' }}></div>
+          {loading && !initialLoad && (
+            <div style={{ textAlign: "center", padding: "20px" }}>
+              Loading more images...
+            </div>
+          )}
         </motion.div>
-      {/* )} */}
+      )}
     </>
   );
 }
+
