@@ -95,7 +95,7 @@ export default function App() {
           </Box>
 
           <img
-            src={imageUrl.previewURL.replace("=w500-iv1", "=w1000-iv1")}
+            src={imageUrl.previewURL?.replace("=w500-iv1", "=w1000-iv1")}
             loading="lazy"
             style={{
               maxHeight: "80vh",
