@@ -33,13 +33,6 @@ export const CardNav = [
     link: "https://linktr.ee/garage_eee",
     color: "#00002f",
   },
-
-  {
-    title: "Garage@EEE Instagram",
-    content: "Do Follow us on our Instagram ",
-    link: "https://www.instagram.com/garage_at_eee/",
-    color: "#E946A",
-  },
   {
     title: "Score",
     content: "Take a look at how you perform!",
