@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import ThreeDotsWave from "./LoadingAnimation";
-import RunningWithErrorsIcon from "@mui/icons-material/RunningWithErrors";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function LoadingScreen() {
   return (
@@ -16,9 +16,9 @@ export default function LoadingScreen() {
         }}
       >
         <Grid item xs={12}>
-          <RunningWithErrorsIcon
+          <FavoriteIcon
             fontSize={"large"}
-            sx={{ color: "white", width: "100%", fontSize: 140 }}
+            sx={{ color: "red", width: "100%", fontSize: 140 }}
           />
           <Typography
             variant="h3"
@@ -29,7 +29,7 @@ export default function LoadingScreen() {
               letterSpacing: 3,
             }}
           >
-            Server might be giving up.
+            It is about time.
           </Typography>
           <Typography
             variant="h5"
@@ -41,7 +41,7 @@ export default function LoadingScreen() {
               color: "#FE019A",
             }}
           >
-            Serverless !== No Server
+            Hope you had fun :P
           </Typography>
           <ThreeDotsWave />
         </Grid>
