@@ -28,16 +28,29 @@ export const menu = [
 //for card button navigation
 export const CardNav = [
   {
+    title: "Garage at EEE",
+    content: "Guess who initiated ENITIO? Learn more about Garage@EEE",
+    link: "https://linktr.ee/garage_eee",
+    color: "#00002f",
+  },
+
+  {
+    title: "Garage@EEE Instagram",
+    content: "Do Follow us on our Instagram ",
+    link: "https://www.instagram.com/garage_at_eee/",
+    color: "#E946A",
+  },
+  {
     title: "Score",
-    content: "Take a look at how you perform",
+    content: "Take a look at how you perform!",
     link: "/ScoreBoard",
     color: "#16abff",
   },
   {
-    title: "Participant Handbook",
-    content: "This, honestly, might be all you need :)",
-    link: "https://bit.ly/ENITIO23-PARTICIPANT_HANDBOOK",
-    color: "#FFA500",
+    title: "Appreciation Board",
+    content: "Let's celebrate everyone's contribution! ",
+    link: "/ThankYou",
+    color: "#FB6F92",
   },
   {
     title: "Photo DUMP",
@@ -47,16 +60,16 @@ export const CardNav = [
     color: "#33B864",
   },
   {
-    title: "Garage at EEE",
-    content: "Guess who initiated ENITIO? Learn more about Garage@EEE",
-    link: "https://linktr.ee/garage_eee",
-    color: "#00002f",
-  },
-  {
-    title: "Instagram",
+    title: "ENITIO Instagram",
     content: "Stay Connected? See you in ENITIO 2024",
     link: "https://www.instagram.com/enitio_ntu/",
     color: "#FE019A",
+  },
+  {
+    title: "Participant Handbook",
+    content: "This, honestly, might be all you need :)",
+    link: "https://bit.ly/ENITIO23-PARTICIPANT_HANDBOOK",
+    color: "#FFA500",
   },
 ];
 

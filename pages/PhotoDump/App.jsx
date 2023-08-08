@@ -1,27 +1,25 @@
-import React , {useEffect} from "react";
-import { Box, Button, ImageList, ImageListItem, Typography, } from "@mui/material";
+import React from "react";
+import {
+  Box,
+  Button,
+  Grid,
+  ImageList,
+  ImageListItem,
+  Typography,
+} from "@mui/material";
 import { motion } from "framer-motion";
 import LoadingScreen from "../../components/LoadingScreen";
 import { BaseModalPopup } from "../../components/Modal";
 import { saveAs } from "file-saver";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import { useInView } from 'react-intersection-observer';
-
 
 export default function App() {
-  const [data, setData] = React.useState([]);
+  const [data, setData] = React.useState({});
   const [imageUrl, setImageUrl] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
-  const [numCols, setNumCols] = React.useState(3);
-  const [page, setPage] = React.useState(1);
-  const [initialLoad, setInitialLoad] = React.useState(true);
-  const [hasMore, setHasMore] = React.useState(true);
-
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
+  const [numCols, setNumCols] = React.useState(3); // Default number of columns
 
   const handleOpen = (url) => {
     setImageUrl(url);
@@ -32,38 +30,21 @@ export default function App() {
     setOpen(false);
   };
 
-
   function fetchData() {
-    if (!hasMore) return; 
-    
-    setLoading(true);
-    
     fetch(`${process.env.NEXT_PUBLIC_IMAGELINK}`)
-    
-      .then(response => response.json())
-      .then(newData => {
-        const limitedData = newData.slice(0, 10 * page);
-        if (limitedData && limitedData.length > 0) 
-        {
-          setData((prevData) => [...prevData, ...limitedData]);
-        } 
-        else 
-        {
-          setHasMore(false);
-        }
-      setLoading(false);
-      setInitialLoad(false); // After the first load, set this to false
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data); // Set the fetched data into the state
+        setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }
 
   function updateCols() {
     const screenWidth = window.innerWidth;
-    console.log(screenWidth);
     if (screenWidth >= 1200) {
-      console.log("im here");
       setNumCols(4); // Adjust for larger screens
     } else if (screenWidth >= 800) {
       setNumCols(3);
@@ -72,33 +53,12 @@ export default function App() {
     }
   }
 
-
-  useEffect(() => {
-    if (inView) {
-      setPage(prevPage => prevPage + 1);
-    }
-}, [inView]);
-
-useEffect(() => {
+  React.useEffect(() => {
     fetchData();
-}, [page]);
 
-  function updateCols() {
-    const screenWidth = window.innerWidth;
-    if (screenWidth >= 1200) {
-      setNumCols(4);
-    } else if (screenWidth >= 800) {
-      setNumCols(3);
-    } else {
-      setNumCols(2);
-    }
-  }
-
-
-
-  useEffect(() => {
     window.addEventListener("resize", updateCols);
     updateCols();
+
     return () => {
       window.removeEventListener("resize", updateCols);
     };
@@ -106,8 +66,8 @@ useEffect(() => {
 
   const handleDownload = () => {
     saveAs(
-      imageUrl.replace("export=view", "export=download"),
-      "image"
+      imageUrl.downloadURL.replace("export=view", "export=download"),
+      "enitio-image"
     );
   };
 
@@ -133,7 +93,7 @@ useEffect(() => {
           </Box>
 
           <img
-          src={imageUrl.previewURL?.replace("=w500-iv1", "=w1000-iv1")}
+            src={imageUrl.previewURL?.replace("=w500-iv1", "=w1000-iv1")}
             loading="lazy"
             style={{
               maxHeight: "80vh",
@@ -149,20 +109,25 @@ useEffect(() => {
           </Button>
         </Box>
       </BaseModalPopup>
-      {initialLoad ? (
+      {loading ? (
         <LoadingScreen />
       ) : (
         <motion.div
           initial={{ opacity: 0 }}
-          style={{ padding: 16 }}
+          whileInView={{ opacity: 1 }}
+          style={{
+            padding: 16,
+          }}
           transition={{ delay: 0.5 }}
-          animate={{ opacity: 1 }}
+          animate={{
+            opacity: 0.1, // Adjust the opacity values for the fade effect
+          }}
         >
           <Typography variant="h6" textAlign={"center"}>
             Click on the images and download them! Enjoy 😊
           </Typography>
-          <br />=
-            <ImageList variant="masonry" cols={numCols} gap={8}>
+          <br />
+          <ImageList variant="masonry" cols={numCols} gap={8}>
             {data.map((item, index) => (
               <ImageListItem key={index}>
                 <img
@@ -174,23 +139,15 @@ useEffect(() => {
                     display: "block",
                     width: "100%",
                   }}
-                  onClick={() => handleOpen(item.previewURL)}
+                  onClick={() => {
+                    handleOpen(item);
+                  }}
                 />
               </ImageListItem>
-              
             ))}
           </ImageList>
-          <div ref={ref} style={{ height: '1px' }}></div>
-          {loading && !initialLoad && (
-            <div style={{ textAlign: "center", padding: "20px" }}>
-              <Typography variant="h5" textAlign={"center"}>
-              Loading more images...
-              </Typography>
-            </div>
-          )}
         </motion.div>
       )}
     </>
   );
 }
-    

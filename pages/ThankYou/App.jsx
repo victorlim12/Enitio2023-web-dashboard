@@ -9,6 +9,7 @@ import {
   Typography,
   ImageListItem,
 } from "@mui/material";
+import Notepad from "../../components/Notepad";
 
 export default function App() {
   const [data, setData] = React.useState([]);
@@ -17,9 +18,7 @@ export default function App() {
 
   function updateCols() {
     const screenWidth = window.innerWidth;
-    console.log(screenWidth);
     if (screenWidth >= 1200) {
-      console.log("im here");
       setNumCols(3); // Adjust for larger screens
     } else if (screenWidth >= 800) {
       setNumCols(3);
@@ -40,7 +39,6 @@ export default function App() {
       });
   }
 
-  console.log(data);
   React.useEffect(() => {
     fetchData(data, setData, loading, setLoading);
     window.addEventListener("resize", updateCols);
@@ -59,39 +57,35 @@ export default function App() {
         <ImageList variant="masonry" cols={numCols} gap={8}>
           {data.map((item, index) => (
             <ImageListItem key={index}>
-              <div>
-                <Card component={motion.div} sx={{ p: "1%" }}>
-                  <CardContent sx={{ height: "fit-content" }}>
-                    <Typography
-                      variant="caption"
-                      component="div"
-                      fontWeight={300}
-                      sx={{ textTransform: "uppercase" }}
-                    >
-                      Dear {item["recipient"]},
-                    </Typography>
-                    <br />
-                    <Typography
-                      variant="body1"
-                      fontWeight={"600"}
-                      color="text.secondary"
-                    >
-                      {item["messages"]}
-                    </Typography>
-                    <br />
-                    <Typography
-                      variant="caption"
-                      component="div"
-                      fontWeight={300}
-                      sx={{ textTransform: "uppercase" }}
-                    >
-                      From: {item["sender"]},
-                      <br />
-                      {item["clan"]}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </div>
+              <Notepad clan={item["clan"]}>
+                <Typography
+                  variant="caption"
+                  component="div"
+                  fontWeight={300}
+                  sx={{ textTransform: "uppercase" }}
+                >
+                  Dear {item["recipient"]},
+                </Typography>
+                <br />
+                <Typography
+                  variant="body1"
+                  fontWeight={"600"}
+                  color="text.secondary"
+                >
+                  {item["messages"]}
+                </Typography>
+                <br />
+                <Typography
+                  variant="caption"
+                  component="div"
+                  fontWeight={300}
+                  sx={{ textTransform: "uppercase" }}
+                >
+                  From: {item["sender"]},
+                  <br />
+                  {item["clan"]}
+                </Typography>
+              </Notepad>
             </ImageListItem>
           ))}
         </ImageList>
